@@ -1,30 +1,35 @@
 ﻿using log4net;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Diagnostics;
+using System.Linq;
 
 namespace CalculatorTesting
 {
-    [TestClass]
-    public class BaseCalculatorTesting
+
+    public class BaseCalculatorTesting : ICalcTesting
     {
         private CalculatorDriver driver;
         private static readonly ILog log = LogManager.GetLogger("RollingFileAppender");
 
-        [ClassInitialize]
-        public static void ClassInit(TestContext context)
+        public void SetupLogging()
         {
             log4net.Config.XmlConfigurator.Configure(new System.IO.FileInfo("log4net.config"));
-            log.Info("ClassInitialize()");
-            System.Diagnostics.Process.Start(@"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe");
         }
 
-        [TestInitialize]
-        public void Before()
+        public void StartWindowsApplicationDriver()
+        {
+            log.Info("ClassInitialize()");
+            Process.Start(@"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe");
+        }
+
+        public void StartCalculatorDriver()
         {
             log.Info("Before");
             driver = new CalculatorDriver();
         }
 
-        [TestMethod]
-        public void ShouldTesting()
+        public void RunCalculatorTest()
         {
             log.Info("ShouldTesting()");
             driver.FindElementByName(CalculatorVariables.два).Click();
@@ -35,8 +40,7 @@ namespace CalculatorTesting
             driver.Sleep(2000);
         }
 
-        [TestCleanup]
-        public void ShouldCleanup()
+        public void QuitCalculatorDriver()
         {
             log.Info("Cleanup");
             try
@@ -46,23 +50,29 @@ namespace CalculatorTesting
             catch (Exception ex)
             {
                 log.Error($"Exception during cleanup: {ex}");
-
             }
         }
-            [ClassCleanup]
-        public static void ClassCleanup()
+
+        public void StopWindowsApplicationDriver()
         {
             log.Info("WinAppDriver close");
             // Завершение процесса WinAppDriver после выполнения всех тестов.
-            var winAppDriverProcesses = System.Diagnostics.Process.GetProcesses().Where(p => p.ProcessName == "WinAppDriver");
+            var winAppDriverProcesses = Process.GetProcesses().Where(p => p.ProcessName == "WinAppDriver");
 
             foreach (var process in winAppDriverProcesses)
             {
                 process.Kill();
-                log4net.LogManager.Shutdown();
             }
+
+            LogManager.Shutdown();
+        }
+
+        public void Dispose()
+        {
+            LogManager.Shutdown();
         }
     }
 }
+
 
 

@@ -3,7 +3,7 @@ using OpenQA.Selenium.Appium;
 
 namespace CalculatorTesting
 {
-    public class CalculatorDriver
+    public class CalculatorDriver : ICalculatorDriver
     {
         protected WindowsDriver<WindowsElement>? driver;
 
