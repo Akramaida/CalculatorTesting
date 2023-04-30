@@ -9,12 +9,20 @@ namespace CalculatorTesting
 
         public CalculatorDriver()
         {
-            if (driver == null)
+            try
             {
-                AppiumOptions options = new AppiumOptions();
-                options.AddAdditionalCapability("app", CalculatorVariables.calculatorAppId);
-                options.AddAdditionalCapability("deviceName", CalculatorVariables.deviceNameWindowsdPS);
-                driver = new WindowsDriver<WindowsElement>(new Uri(CalculatorVariables.windowsApplicationDriverUrl), options);
+                if (driver == null)
+                {
+                    AppiumOptions options = new AppiumOptions();
+                    options.AddAdditionalCapability("app", CalculatorVariables.calculatorAppId);
+                    options.AddAdditionalCapability("deviceName", CalculatorVariables.deviceNameWindowsdPS);
+                    driver = new WindowsDriver<WindowsElement>(new Uri(CalculatorVariables.windowsApplicationDriverUrl), options);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error initializing WindowsDriver: " + ex.Message);
+                throw;
             }
         }
 

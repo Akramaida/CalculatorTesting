@@ -39,10 +39,17 @@ namespace CalculatorTesting
         public void ShouldCleanup()
         {
             log.Info("Cleanup");
-            driver.Quit();
-        }
+            try
+            {
+                driver.Quit();
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Exception during cleanup: {ex}");
 
-        [ClassCleanup]
+            }
+        }
+            [ClassCleanup]
         public static void ClassCleanup()
         {
             log.Info("WinAppDriver close");
