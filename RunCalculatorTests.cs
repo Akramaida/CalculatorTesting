@@ -12,22 +12,22 @@ namespace CalculatorTesting
         private BaseCalculatorTesting calculatorTesting;
 
         [TestInitialize]
-        public void TestInitialize()
+        public void ShouldInitialize()
         {
             calculatorTesting = new BaseCalculatorTesting();
             calculatorTesting.SetupLogging();
-            calculatorTesting.StartWindowsApplicationDriver();
             calculatorTesting.StartCalculatorDriver();
+            
         }
 
         [TestMethod]
-        public void TestCalculatorAddition()
+        public void ShouldCalculatorAddition()
         {
             calculatorTesting.RunCalculatorTest();
         }
 
         [TestCleanup]
-        public void TestCleanup()
+        public void ShouldCleanup()
         {
             calculatorTesting.QuitCalculatorDriver();
             calculatorTesting.StopWindowsApplicationDriver();
@@ -35,3 +35,4 @@ namespace CalculatorTesting
         }
     }
 }
+

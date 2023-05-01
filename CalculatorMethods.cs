@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium.Appium.Windows;
+using System.Diagnostics;
 
 namespace CalculatorTesting
 {
@@ -19,7 +20,7 @@ namespace CalculatorTesting
         {
             return driver.FindElementByAccessibilityId(CalculatorVariables.calculatorResultsText).Text;
         }
-
+        
         public WindowsElement FindElementByName(string name)
         {
             return driver.FindElementByName(name);

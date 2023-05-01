@@ -15,26 +15,21 @@ namespace CalculatorTesting
             log4net.Config.XmlConfigurator.Configure(new System.IO.FileInfo("log4net.config"));
         }
 
-        public void StartWindowsApplicationDriver()
-        {
-            log.Info("ClassInitialize()");
-            Process.Start(@"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe");
-        }
-
         public void StartCalculatorDriver()
         {
-            log.Info("Before");
+            log.Info("Initializing...");
             driver = new CalculatorMethods();
         }
 
         public void RunCalculatorTest()
         {
-            log.Info("ShouldTesting()");
-            driver.FindElementByName(CalculatorVariables.два).Click();
-            driver.FindElementByName(CalculatorVariables.плюс).Click();
-            driver.FindElementByName(CalculatorVariables.два).Click();
-            driver.FindElementByName(CalculatorVariables.равно).Click();
+            log.Info("Test started");
+            driver.FindElementByName(CalculatorVariables.two).Click();
+            driver.FindElementByName(CalculatorVariables.plus).Click();
+            driver.FindElementByName(CalculatorVariables.two).Click();
+            driver.FindElementByName(CalculatorVariables.equal).Click();
             Assert.AreEqual("Отображать как 4", driver.GetCalculatorResultText());
+            log.Info("Successfully ");
             driver.Sleep(2000);
         }
 

@@ -8,19 +8,19 @@ namespace CalculatorTesting
         public const string deviceNameWindowsdPS = "WindowsPS";
         public const string deviceNameLinuxPS = "LinuxPS";
         public const string deviceNameMacOsPS = "MacOsPS";
-        public const string плюс = "Плюс";
-        public const string минус = "Минус";
-        public const string равно = "Равно";
-        public const string один = "Один";
-        public const string два = "Два";
-        public const string три = "Три";
-        public const string четыре = "Четыре";
-        public const string пять = "Пять";
-        public const string шесть = "Шесть";
-        public const string семь = "Семь";
-        public const string восемь = "Восемь";
-        public const string девять = "Девять";
-        public const string десять = "Десять";
+        public const string plus = "Плюс";
+        public const string minus = "Минус";
+        public const string equal = "Равно";
+        public const string one = "Один";
+        public const string two = "Два";
+        public const string three = "Три";
+        public const string four = "Четыре";
+        public const string five = "Пять";
+        public const string six = "Шесть";
+        public const string seven = "Семь";
+        public const string eight = "Восемь";
+        public const string nine= "Девять";
+        public const string ten = "Десять";
         public const string calculatorResultsText = "CalculatorResults";
     }
 }

@@ -9,7 +9,6 @@ namespace CalculatorTesting
     public interface ICalcTesting : IDisposable
     {
         void SetupLogging();
-        void StartWindowsApplicationDriver();
         void StartCalculatorDriver();
         void RunCalculatorTest();
         void QuitCalculatorDriver();

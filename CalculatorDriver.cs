@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Appium;
+using System.Diagnostics;
 
 namespace CalculatorTesting
 {
@@ -13,6 +14,7 @@ namespace CalculatorTesting
             {
                 if (driver == null)
                 {
+                    Process.Start(@"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe");
                     AppiumOptions options = new();
                     options.AddAdditionalCapability("app", CalculatorVariables.calculatorAppId);
                     options.AddAdditionalCapability("deviceName", CalculatorVariables.deviceNameWindowsdPS);
@@ -30,7 +32,7 @@ namespace CalculatorTesting
         {
             return driver;
         }
-
+        
 
     }
 
