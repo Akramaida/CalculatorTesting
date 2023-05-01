@@ -1,15 +1,13 @@
 ﻿using log4net;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Diagnostics;
-using System.Linq;
+
 
 namespace CalculatorTesting
 {
 
     public class BaseCalculatorTesting : ICalcTesting
     {
-        private CalculatorDriver driver;
+        private CalculatorMethods driver;
         private static readonly ILog log = LogManager.GetLogger("RollingFileAppender");
 
         public void SetupLogging()
@@ -26,7 +24,7 @@ namespace CalculatorTesting
         public void StartCalculatorDriver()
         {
             log.Info("Before");
-            driver = new CalculatorDriver();
+            driver = new CalculatorMethods();
         }
 
         public void RunCalculatorTest()
@@ -64,7 +62,6 @@ namespace CalculatorTesting
                 process.Kill();
             }
 
-            LogManager.Shutdown();
         }
 
         public void Dispose()

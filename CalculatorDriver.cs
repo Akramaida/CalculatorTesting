@@ -13,7 +13,7 @@ namespace CalculatorTesting
             {
                 if (driver == null)
                 {
-                    AppiumOptions options = new AppiumOptions();
+                    AppiumOptions options = new();
                     options.AddAdditionalCapability("app", CalculatorVariables.calculatorAppId);
                     options.AddAdditionalCapability("deviceName", CalculatorVariables.deviceNameWindowsdPS);
                     driver = new WindowsDriver<WindowsElement>(new Uri(CalculatorVariables.windowsApplicationDriverUrl), options);
@@ -26,26 +26,12 @@ namespace CalculatorTesting
             }
         }
 
-
-        public string GetCalculatorResultText()
+        public WindowsDriver<WindowsElement> GetCalculatorDriver()
         {
-            return driver.FindElementByAccessibilityId(CalculatorVariables.calculatorResultsText).Text;
+            return driver;
         }
 
-        public WindowsElement FindElementByName(string name)
-        {
-            return driver.FindElementByName(name);
-        }
 
-        public void Sleep(int num)
-        {
-            Thread.Sleep(num);
-        }
-
-        public void Quit()
-        {
-            driver?.Quit();
-            driver = null;
-        }
     }
+
 }

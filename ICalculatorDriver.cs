@@ -1,10 +1,9 @@
 ﻿using OpenQA.Selenium.Appium.Windows;
 
-public interface ICalculatorDriver
+namespace CalculatorTesting
 {
-    WindowsElement FindElementByName(string name);
-    string GetCalculatorResultText();
-    void Quit();
-    void Sleep(int num);
+    public interface ICalculatorDriver
+    {
+        public WindowsDriver<WindowsElement> GetCalculatorDriver();
+    }
 }
-
