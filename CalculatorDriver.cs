@@ -16,9 +16,9 @@ namespace CalculatorTesting
                 {
                     Process.Start(@"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe");
                     AppiumOptions options = new();
-                    options.AddAdditionalCapability("app", CalculatorVariables.calculatorAppId);
-                    options.AddAdditionalCapability("deviceName", CalculatorVariables.deviceNameWindowsdPS);
-                    driver = new WindowsDriver<WindowsElement>(new Uri(CalculatorVariables.windowsApplicationDriverUrl), options);
+                    options.AddAdditionalCapability("app", DriverVariables.calculatorAppId);
+                    options.AddAdditionalCapability("deviceName", DriverVariables.deviceNameWindowsdPS);
+                    driver = new WindowsDriver<WindowsElement>(new Uri(DriverVariables.windowsApplicationDriverUrl), options);
                 }
             }
             catch (Exception ex)

@@ -3,11 +3,7 @@ namespace CalculatorTesting
 {
     public static class CalculatorVariables
     {
-        public const string windowsApplicationDriverUrl = "http://127.0.0.1:4723";
-        public const string calculatorAppId = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App";
-        public const string deviceNameWindowsdPS = "WindowsPS";
-        public const string deviceNameLinuxPS = "LinuxPS";
-        public const string deviceNameMacOsPS = "MacOsPS";
+      
         public const string plus = "Плюс";
         public const string minus = "Минус";
         public const string equal = "Равно";
